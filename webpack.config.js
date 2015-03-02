@@ -1,3 +1,4 @@
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
     './demo'
   ],
   output: {
-    path: __dirname + '/src/',
+    path: path.join(__dirname, '/src/'),
     filename: 'bundle.js',
     publicPath: '/src/'
   },
@@ -21,7 +22,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['react-hot', 'jsx?harmony'], exclude: /node_modules/ },
+      {test: /\.js$/, loaders: ['react-hot', 'jsx?harmony'], exclude: /node_modules/}
     ]
   }
 };
