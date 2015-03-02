@@ -1,9 +1,6 @@
 'use strict';
 
-var SubComponent = require('./subComponent');
-var AnotherSubComponent = require('./anotherSubComponent');
+var Checkbox = require('./checkbox');
+var Radio = require('./radio');
 
-module.exports = {
-  SubComponent: SubComponent,
-  AnotherSubComponent: AnotherSubComponent
-};
+module.exports = {Checkbox, Radio};

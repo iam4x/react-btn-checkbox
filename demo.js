@@ -1,19 +1,19 @@
 'use strict';
 
-var React = require('react'),
-    ReactBtnCheckbox = require('./src/index'),
-    SubComponent = ReactBtnCheckbox.SubComponent,
-    AnotherSubComponent = ReactBtnCheckbox.AnotherSubComponent;
+var React = require('react');
+var ReactBtnCheckbox = require('./src/index');
+var Checkbox = ReactBtnCheckbox.Checkbox;
+var Radio = ReactBtnCheckbox.Radio;
 
-var DemoApp = React.createClass({
-  render: function() {
+var Demo = React.createClass({
+  render: function () {
     return (
       <div>
-        <SubComponent />
-        <AnotherSubComponent />
+        <Checkbox />
+        <Radio />
       </div>
     );
   }
 });
 
-React.render(<DemoApp />, document.body);
+React.render(<Demo />, document.body);
