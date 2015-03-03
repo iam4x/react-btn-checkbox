@@ -1,14 +1,14 @@
 'use strict';
 
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
 var header = require('gulp-header');
 var shell = require('gulp-shell');
 var del = require('del');
 var runSequence = require('run-sequence');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+var webpack = require('webpack');
+var objectAssign = require('object-assign');
+
+var webpackConfig = require('./webpack.production.config.js');
 var pkg = require('./package.json');
 
 var BANNER = [
@@ -26,38 +26,36 @@ var PATH = {
   DIST: './dist/'
 };
 
-var handleErr = function (err) {
-  console.error('ERROR' + (err.fileName ? ' in ' + err.fileName : ':'));
-  console.error(err.message);
-  this.end();
-};
-
 gulp.task('clean', function (cb) {
   del([PATH.DIST], cb);
 });
 
-gulp.task('browserify', function () {
-  var b = browserify();
-  b.transform('reactify', {
-    es6: true
+gulp.task('webpack:unmin', function (cb) {
+  var unminConfig = objectAssign({}, webpackConfig);
+  unminConfig.output.filename = pkg.name + '.js';
+  unminConfig.output.path = PATH.DIST;
+  return webpack(unminConfig, function (err) {
+    console.log(err);
+    cb();
   });
-  b.add(PATH.SOURCE + 'index.js');
-  b.ignore('react');
-  b.external(['react', 'react/addons']);
-
-  return b.bundle()
-    .pipe(source(pkg.name + '.js'))
-    .pipe(gulp.dest(PATH.DIST));
 });
 
-gulp.task('uglify', function () {
-  return gulp.src(PATH.DIST + '*.js')
-    .pipe(uglify()).on('error', handleErr)
-    .pipe(rename({
-      basename: pkg.name,
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest(PATH.DIST));
+gulp.task('webpack:min', function (cb) {
+  var min = objectAssign({}, webpackConfig);
+  min.output.filename = pkg.name + '.min.js';
+  min.output.path = PATH.DIST;
+  min.plugins = min.plugins.concat([
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
+  ]);
+  return webpack(min, function (err) {
+    console.log(err);
+    cb();
+  });
 });
 
 gulp.task('banner', function () {
@@ -77,9 +75,8 @@ gulp.task('serve', shell.task('node server.js'));
 
 gulp.task('build', ['clean'], function (cb) {
   runSequence(
-    'test',
-    'browserify',
-    'uglify',
+    'webpack:unmin',
+    'webpack:min',
     'banner',
     cb);
 });
