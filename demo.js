@@ -6,10 +6,26 @@ var Checkbox = ReactBtnCheckbox.Checkbox;
 var Radio = ReactBtnCheckbox.Radio;
 
 var Demo = React.createClass({
-  render: function () {
+  getInitialState() {
+    return {
+      checkboxes: {
+        'First': false,
+        'Second': true,
+        'Third': false
+      }
+    };
+  },
+  handleCheckboxes(checkboxes) {
+    this.setState({checkboxes});
+  },
+  render() {
     return (
       <div>
-        <Checkbox />
+        <Checkbox
+          label={`Checkbox`}
+          options={this.state.checkboxes}
+          onChange={this.handleCheckboxes} />
+        <pre>{JSON.stringify(this.state.checkboxes)}</pre>
         <Radio />
       </div>
     );
