@@ -92,6 +92,7 @@ gulp.task('serve', shell.task('node server.js'));
 
 gulp.task('build', ['clean'], function (cb) {
   runSequence(
+    'test',
     'webpack:unmin',
     'webpack:min',
     'sass:unmin',
