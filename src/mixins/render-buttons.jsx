@@ -10,6 +10,12 @@ export default {
       'active': this.props.options[option]
     });
   },
+  _getGroupClasses() {
+    return React.addons.classSet({
+      'btn-group': true,
+      'bootstrap': this.props.bootstrap
+    });
+  },
   _renderButtons() {
     const markup = [];
     for (let option in this.props.options) {

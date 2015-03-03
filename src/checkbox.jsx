@@ -21,7 +21,7 @@ export default React.createClass({
     return (
       <div className='checkbox-btn-container form-group'>
         <label>{this.props.label}</label>
-        <div className='btn-group'>
+        <div className={this._getGroupClasses()}>
           {this._renderButtons(this.props.options)}
         </div>
       </div>
