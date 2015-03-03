@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/iam4x/react-btn-checkbox/issues"
   },
-  "homepage": "https://github.com/iam4x/react-btn-checkbox",
+  "homepage": "http://iam4x.github.io/react-btn-checkbox/",
   "jest": {
     "scriptPreprocessor": "./node_modules/babel-jest",
     "testFileExtensions": [
