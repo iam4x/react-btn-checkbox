@@ -2,7 +2,7 @@
 
 import React from 'react/addons';
 
-const RenderButtonsMixin = {
+export default {
   _renderButtons() {
     const markup = [];
     for (let option in this.props.options) {
@@ -24,5 +24,3 @@ const RenderButtonsMixin = {
     return markup;
   }
 };
-
-export default RenderButtonsMixin;
