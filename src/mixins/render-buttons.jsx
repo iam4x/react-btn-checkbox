@@ -3,20 +3,21 @@
 import React from 'react/addons';
 
 export default {
+  _getBootstrapClasses(option) {
+    return React.addons.classSet({
+      'btn': this.props.bootstrap && true,
+      'btn-default': this.props.bootstrap,
+      'active': this.props.options[option]
+    });
+  },
   _renderButtons() {
     const markup = [];
     for (let option in this.props.options) {
-      let boundClick = this._handleClick.bind(this, option);
-      let classes = React.addons.classSet({
-        'btn': true,
-        'btn-default': true,
-        'active': this.props.options[option]
-      });
       markup.push(
         <label
           key={option}
-          className={classes}
-          onClick={boundClick}>
+          className={this._getBootstrapClasses(option)}
+          onClick={this._handleClick.bind(this, option)}>
           {option}
         </label>
       );
