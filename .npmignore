@@ -1,10 +1,15 @@
 __tests__
 src
 .gitignore
+.eslintrc
+.jscs.json
+.gitignore
 .travis.yml
+.nvmrc
 gulpfile.js
 demo.js
 preprocessor.js
 server.js
 webpack.config.js
+webpack.production.config.js
 index.html
