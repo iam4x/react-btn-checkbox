@@ -6,6 +6,10 @@
 >
 > Like [ui.bootstrap.buttons](http://angular-ui.github.io/bootstrap/#/buttons) as a React Component.
 
+## Live example
+
+http://iam4x.github.io/react-btn-checkbox/
+
 ## Setup
 
 You can import the lib with as AMD modules, CommonJS modules as a global JS script.
