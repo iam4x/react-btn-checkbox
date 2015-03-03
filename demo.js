@@ -12,11 +12,19 @@ var Demo = React.createClass({
         'First': false,
         'Second': true,
         'Third': false
+      },
+      radio: {
+        'First': false,
+        'Second': true,
+        'Third': false
       }
     };
   },
   handleCheckboxes(checkboxes) {
     this.setState({checkboxes});
+  },
+  handleRadio(radio) {
+    this.setState({radio});
   },
   render() {
     return (
@@ -26,7 +34,12 @@ var Demo = React.createClass({
           options={this.state.checkboxes}
           onChange={this.handleCheckboxes} />
         <pre>{JSON.stringify(this.state.checkboxes)}</pre>
-        <Radio />
+        <Radio
+          ref='radio'
+          label={`Radio & Uncheckable Radio`}
+          options={this.state.radio}
+          onChange={this.handleRadio} />
+        <pre>{JSON.stringify(this.state.radio)}</pre>
       </div>
     );
   }
