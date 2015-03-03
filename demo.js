@@ -1,9 +1,12 @@
 'use strict';
 
 var React = require('react');
+
 var ReactBtnCheckbox = require('./src/index');
 var Checkbox = ReactBtnCheckbox.Checkbox;
 var Radio = ReactBtnCheckbox.Radio;
+
+require('./src/styles/styles.scss');
 
 var Demo = React.createClass({
   getInitialState() {

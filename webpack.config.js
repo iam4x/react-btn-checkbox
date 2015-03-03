@@ -22,7 +22,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/}
+      {test: /\.js/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/},
+      {test: /\.scss$/, loader: 'style!css!sass?outputStyle=expanded'}
     ]
   }
 };

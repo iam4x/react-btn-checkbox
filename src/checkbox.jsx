@@ -2,6 +2,7 @@
 
 import React from 'react';
 import objectAssign from 'object-assign';
+
 import RenderButtonsMixin from './mixins/render-buttons';
 
 export default React.createClass({

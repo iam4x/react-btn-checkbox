@@ -1,0 +1,41 @@
+.checkbox-btn-container,
+.radio-btn-container {
+  label {
+    display: block;
+  }
+
+  .btn-group {
+    label {
+      border-bottom: 1px solid #000;
+      border-top: 1px solid #000;
+      display: inline-block;
+      padding: 5px 10px;
+
+      &.active {
+        background: #ddd;
+
+        &:hover {
+          background: #ddd;
+        }
+      }
+
+      &:hover {
+        background: #eee;
+        cursor: pointer;
+      }
+
+      &:first-of-type,
+      &:last-of-type {
+        border: 1px solid #000;
+      }
+
+      &:first-of-type {
+        border-radius: 5px 0 0 5px;
+      }
+
+      &:last-of-type {
+        border-radius: 0 5px 5px 0;
+      }
+    }
+  }
+}
