@@ -1,0 +1,229 @@
+<html>
+  <head>
+    <title>React Button Checkbox</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='./assets/docs.min.css'>
+    <link rel='stylesheet' href='./assets/docs-react.css'>
+    <link rel='stylesheet' href='../dist/react-btn-checkbox.css'>
+    <link rel='stylesheet' href='./assets/prism.css'>
+  </head>
+  <body>
+    <div class='bs-docs-header'>
+      <div class='container'>
+        <h1>React Button Checkbox</h1>
+        <p>
+          Display your input checkbox and radio like buttons.<br><br>
+          Two components that can make a group of buttons behave like a set of checkboxes, radio buttons, or a hybrid where radio buttons can be unchecked.
+        </p>
+      </div>
+    </div>
+    <div class='container'>
+      <h2>Setup</h2>
+      <hr>
+      <span class='lead'>
+        You can import the lib with as AMD modules, CommonJS modules as a global JS script.
+      </span>
+      <h3>CommonJS / AMD</h3>
+      <pre><code class='language-javascript'>
+$ npm install react-btn-checkbox
+
+var ReactBtn = require('react-btn-checkbox');
+var Checkbox = ReactBtn.Checkbox;
+var Radio = ReactBtn.Radio;
+
+// or
+
+var Checkbox = require('react-btn-checkbox').Checkbox;
+var Radio = require('react-btn-checkbox').Radio;
+
+// or (ES6 &lt;3)
+
+import {Checkbox, Radio} from 'react-btn-checkbox';</code></pre>
+      <h3>Browser globals</h3>
+      <p class='help-text'>
+        The package contains two files <code>dist/react-btn-checkbox.min.js</code> and <code>dist/react-btn-checkbox.js</code> with all components exported in the <code>window.ReactBtn</code> object.
+      </p>
+      <pre><code class='language-javascript'>&lt;script src='dist/react-btn-checkbox.min.js'&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  var Checkbox = ReactBtn.Checkbox;
+  var Radio = ReactBtn.Radio;
+&lt;script&gt;
+      </code></pre>
+      <h3>Styles</h3>
+      <p class='help-text'>
+        Don't forget to include stylsheets from <code>dist/react-btn-checkbox.min.css</code> or <code>dist/react-btn-checkbox.css</code>
+      </p>
+      <pre><code class='language-javascript'>&lt;link rel='stylesheet' href='dist/react-btn-checkbox.min.css'&gt;</code></pre>
+      <h2>Examples</h2>
+      <hr>
+      <h3>Checkbox as Button Group</h3>
+      <div id='checkbox-first-example' class='bs-example'></div>
+      <div class='highlight'>
+        <pre><code class='language-jsx'>
+var Checkbox = ReactBtn.Checkbox;
+
+var options = {
+  'First': false,
+  'Second': true,
+  'Third': false
+};
+
+&lt;Checkbox
+  label='label'
+  options={options}
+  onChange={this.handleChange} /&gt;</code></pre>
+      </div>
+      <script type='text/jsx'>
+        var Checkbox = ReactBtn.Checkbox;
+        var CheckboxFirstExample = React.createClass({
+          getInitialState: function () {
+            return {
+              'First': false,
+              'Second': true,
+              'Third': false
+            };
+          },
+          render: function () {
+            return (
+              <div>
+                <Checkbox
+                  label='Checkbox Label'
+                  options={this.state}
+                  onChange={this.setState.bind(this)} />
+                <strong>State</strong>
+                <pre>{JSON.stringify(this.state)}</pre>
+              </div>
+            );
+          }
+        });
+        React.render(
+          <CheckboxFirstExample />,
+          document.getElementById('checkbox-first-example')
+        );
+      </script>
+      <h3>Radio as Button Group</h3>
+      <div id='radio-first-example' class='bs-example'></div>
+      <div class='highlight'>
+        <pre><code class='language-jsx'>
+var Radio = ReactBtn.Radio;
+
+var options = {
+  'First': false,
+  'Second': false,
+  'Third': true
+};
+
+&lt;Radio
+  label='label'
+  options={options}
+  onChange={this.handleChange} /&gt;</code></pre>
+      </div>
+      <script type='text/jsx'>
+        var Radio = ReactBtn.Radio;
+        var RadioFirstExample = React.createClass({
+          getInitialState: function () {
+            return {
+              'First': false,
+              'Second': false,
+              'Third': true
+            }
+          },
+          render: function () {
+            return (
+              <div>
+                <Radio
+                  label='Radio label'
+                  options={this.state}
+                  onChange={this.setState.bind(this)} />
+                <strong>State</strong>
+                <pre>{JSON.stringify(this.state)}</pre>
+              </div>
+            );
+          }
+        });
+        React.render(
+          <RadioFirstExample />,
+          document.getElementById('radio-first-example')
+        );
+      </script>
+      <h3>With bootsrap styles</h3>
+      <span class='help-block'>
+        Add <code>bootsrap</code> attribute on component to enable use with Twitter Bootstrap button group styles.
+      </span>
+      <div id='bootstrap-example' class='bs-example'></div>
+      <div class='highlight'>
+        <pre><code class='language-jsx'>
+var Radio = ReactBtn.Radio;
+
+var options = {
+  'First': false,
+  'Second': false,
+  'Third': true
+};
+
+&lt;Radio
+  label='label'
+  options={options}
+  onChange={this.handleChange}
+  bootstrap /&gt;</code></pre>
+      </div>
+      <script type='text/jsx'>
+        var Radio = ReactBtn.Radio;
+        var BootstrapExample = React.createClass({
+          getInitialState: function () {
+            return {
+              'Nice': false,
+              'Bootsrap': false,
+              'Awesome': true
+            }
+          },
+          render: function () {
+            return (
+              <div>
+                <Radio
+                  label='Radio label with bootstrap'
+                  options={this.state}
+                  onChange={this.setState.bind(this)}
+                  bootstrap />
+                <strong>State</strong>
+                <pre>{JSON.stringify(this.state)}</pre>
+              </div>
+            );
+          }
+        });
+        React.render(
+          <BootstrapExample />,
+          document.getElementById('bootstrap-example')
+        );
+      </script>
+    </div>
+    <footer class='bs-docs-footer'>
+      <ul class='bs-docs-footer-links muted'>
+        <li>
+          <iframe src='https://ghbtns.com/github-btn.html?user=iam4x&repo=react-btn-checkbox&type=star&count=true' frameborder='0' scrolling='0' width='92' height='20'></iframe>
+        </li>
+        <li>
+          <iframe src='https://ghbtns.com/github-btn.html?user=iam4x&repo=react-btn-checkbox&type=fork&count=true' frameborder='0' scrolling='0' width='92' height='20'></iframe>
+        </li>
+      </ul>
+      <ul class='bs-docs-footer-links muted'>
+        <li>Currently v0.0.1</li>
+        <li>
+          <a href='https://github.com/iam4x/react-btn-checkbox'>Github</a>
+        </li>
+        <li>
+          <a href='https://github.com/iam4x/react-btn-checkbox/issues'>Issues</a>
+        </li>
+        <li>
+          <a href='https://github.com/iam4x/react-btn-checkbox/releases'>Releases</a>
+        </li>
+      </ul>
+    </footer>
+    <!-- JavaScripts src -->
+    <script src='./assets/prism.js'></script>
+    <script src='../node_modules/react/dist/react-with-addons.min.js'></script>
+    <script src='../node_modules/react/dist/JSXTransformer.js'></script>
+    <script src='../dist/react-btn-checkbox.js'></script>
+  </body>
+</html>
