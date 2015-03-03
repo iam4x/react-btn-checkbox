@@ -2,17 +2,17 @@
 
 'use strict';
 
-jest.dontMock('../src/checkbox');
+jest.dontMock('../src/radio');
 jest.dontMock('../src/mixins/render-buttons');
 jest.dontMock('object-assign');
 
-describe('Checkbox', function () {
+describe('Radio', function () {
   it('should work', function () {
     var React = require('react/addons');
-    var Checkbox = require('../src/checkbox');
+    var Radio = require('../src/radio');
     var TestUtils = React.addons.TestUtils;
 
-    var fakeCheckBox = {
+    var fakeRadio = {
       'First': false,
       'Second': true,
       'Third': false
@@ -20,14 +20,14 @@ describe('Checkbox', function () {
 
     var spy = jest.genMockFunction();
     var handleChange = function (value) {
-      fakeCheckBox = value;
+      fakeRadio = value;
       return spy();
     };
 
     var component = TestUtils.renderIntoDocument(
-      <Checkbox
-        label={'Checkbox'}
-        options={fakeCheckBox}
+      <Radio
+        label={'Radio'}
+        options={fakeRadio}
         onChange={handleChange} />
     );
 
@@ -35,7 +35,7 @@ describe('Checkbox', function () {
 
     var labels = TestUtils.scryRenderedDOMComponentsWithTag(component, 'label');
     // Label of button group
-    expect(labels[0].getDOMNode().textContent).toBe('Checkbox');
+    expect(labels[0].getDOMNode().textContent).toBe('Radio');
     // Labels of buttons
     expect(labels[1].getDOMNode().textContent).toBe('First');
     expect(labels[2].getDOMNode().textContent).toBe('Second');
@@ -50,8 +50,8 @@ describe('Checkbox', function () {
     expect(spy).toBeCalled();
 
     // Value have changed
-    expect(fakeCheckBox.First).toBe(true);
-    expect(fakeCheckBox.Second).toBe(true);
-    expect(fakeCheckBox.Third).toBe(false);
+    expect(fakeRadio.First).toBe(true);
+    expect(fakeRadio.Second).toBe(false);
+    expect(fakeRadio.Third).toBe(false);
   });
 });
