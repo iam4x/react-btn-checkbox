@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+
 import RenderButtonsMixin from './mixins/render-buttons';
 
 export default React.createClass({
