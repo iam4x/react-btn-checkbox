@@ -1,5 +1,5 @@
 /**
- * react-btn-checkbox v0.0.1 (https://github.com/iam4x/react-btn-checkbox)
+ * react-btn-checkbox v0.0.1 (http://iam4x.github.io/react-btn-checkbox/)
  * Copyright 2015 iam4x
  * Licensed under MIT
  */
