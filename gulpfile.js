@@ -3,6 +3,9 @@
 var gulp = require('gulp');
 var header = require('gulp-header');
 var shell = require('gulp-shell');
+var sass = require('gulp-sass');
+var minifyCSS = require('gulp-minify-css');
+var concatCss = require('gulp-concat-css');
 var del = require('del');
 var runSequence = require('run-sequence');
 var webpack = require('webpack');
@@ -58,8 +61,22 @@ gulp.task('webpack:min', function (cb) {
   });
 });
 
+gulp.task('sass:unmin', function () {
+  return gulp.src(PATH.SOURCE + 'styles/*.scss')
+    .pipe(sass())
+    .pipe(concatCss(pkg.name + '.css'))
+    .pipe(gulp.dest(PATH.DIST));
+});
+
+gulp.task('sass:min', function () {
+  return gulp.src(PATH.DIST + '*.css')
+    .pipe(concatCss(pkg.name + '.min.css'))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest(PATH.DIST));
+});
+
 gulp.task('banner', function () {
-  return gulp.src(PATH.DIST + '*.js')
+  return gulp.src(PATH.DIST + '*')
     .pipe(header(BANNER, {
       pkg: pkg
     }))
@@ -77,6 +94,8 @@ gulp.task('build', ['clean'], function (cb) {
   runSequence(
     'webpack:unmin',
     'webpack:min',
+    'sass:unmin',
+    'sass:min',
     'banner',
     cb);
 });
