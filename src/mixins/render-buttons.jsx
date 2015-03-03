@@ -3,10 +3,10 @@
 import React from 'react/addons';
 
 const RenderButtonsMixin = {
-  renderButtons() {
+  _renderButtons() {
     const markup = [];
     for (let option in this.props.options) {
-      let boundClick = this.handleClick.bind(this, option);
+      let boundClick = this._handleClick.bind(this, option);
       let classes = React.addons.classSet({
         'btn': true,
         'btn-default': true,

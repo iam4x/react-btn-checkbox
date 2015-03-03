@@ -6,7 +6,7 @@ import RenderButtonsMixin from './mixins/render-buttons';
 
 export default React.createClass({
   mixins: [RenderButtonsMixin],
-  handleClick(option) {
+  _handleClick(option) {
     this.props.onChange(
       objectAssign(
         this.props.options,
@@ -21,7 +21,7 @@ export default React.createClass({
       <div className='checkbox-btn-container form-group'>
         <label>{this.props.label}</label>
         <div className='btn-group'>
-          {this.renderButtons(this.props.options)}
+          {this._renderButtons(this.props.options)}
         </div>
       </div>
     );
