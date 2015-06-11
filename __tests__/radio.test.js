@@ -3,8 +3,7 @@
 'use strict';
 
 jest.dontMock('../src/radio');
-jest.dontMock('../src/mixins/render-buttons');
-jest.dontMock('object-assign');
+jest.dontMock('../src/classes/ButtonComponent');
 
 describe('Radio', function () {
   it('should work', function () {
@@ -31,7 +30,7 @@ describe('Radio', function () {
         onChange={handleChange} />
     );
 
-    expect(component.getDOMNode().children.length).toBe(2);
+    expect(React.findDOMNode(component).children.length).toBe(2);
 
     var labels = TestUtils.scryRenderedDOMComponentsWithTag(component, 'label');
     // Label of button group
