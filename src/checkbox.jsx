@@ -1,13 +1,10 @@
-'use strict';
-
-import React from 'react';
 import objectAssign from 'object-assign';
+import ButtonComponent from './classes/ButtonComponent';
 
-import RenderButtonsMixin from './mixins/render-buttons';
+class Checkbox extends ButtonComponent {
 
-export default React.createClass({
-  mixins: [RenderButtonsMixin],
-  _handleClick(option) {
+  _handleClick = ::this._handleClick
+  _handleClick(option: string) {
     this.props.onChange(
       objectAssign(
         this.props.options,
@@ -16,15 +13,8 @@ export default React.createClass({
         }
       )
     );
-  },
-  render() {
-    return (
-      <div className='checkbox-btn-container form-group'>
-        <label>{this.props.label}</label>
-        <div className={this._getGroupClasses()}>
-          {this._renderButtons(this.props.options)}
-        </div>
-      </div>
-    );
   }
-});
+
+}
+
+export default Checkbox;
