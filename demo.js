@@ -1,16 +1,14 @@
-'use strict';
+import React, {Component} from 'react';
+import {Checkbox, Radio} from './src/index';
 
-var React = require('react');
+import './src/styles/styles.scss';
 
-var ReactBtnCheckbox = require('./src/index');
-var Checkbox = ReactBtnCheckbox.Checkbox;
-var Radio = ReactBtnCheckbox.Radio;
+class Demo extends React.Component {
 
-require('./src/styles/styles.scss');
+  constructor(props, context) {
+    super(props, context);
 
-var Demo = React.createClass({
-  getInitialState() {
-    return {
+    this.state = {
       checkboxes: {
         'First': false,
         'Second': true,
@@ -22,30 +20,36 @@ var Demo = React.createClass({
         'Third': false
       }
     };
-  },
-  handleCheckboxes(checkboxes) {
-    this.setState({checkboxes});
-  },
-  handleRadio(radio) {
-    this.setState({radio});
-  },
+  }
+
+  _handleCheckboxes = ::this._handleCheckboxes
+  _handleCheckboxes(checkboxes) {
+    return this.setState({checkboxes});
+  }
+
+  _handleRadio = ::this._handleRadio
+  _handleRadio(radio) {
+    return this.setState({radio});
+  }
+
   render() {
     return (
       <div>
         <Checkbox
-          label={`Checkbox`}
+          label='`Checkbox'
           options={this.state.checkboxes}
-          onChange={this.handleCheckboxes} />
+          onChange={this._handleCheckboxes} />
         <pre>{JSON.stringify(this.state.checkboxes)}</pre>
         <Radio
           ref='radio'
-          label={`Radio & Uncheckable Radio`}
+          label='Radio & Uncheckable Radio'
           options={this.state.radio}
-          onChange={this.handleRadio} />
+          onChange={this._handleRadio} />
         <pre>{JSON.stringify(this.state.radio)}</pre>
       </div>
     );
   }
-});
+
+}
 
 React.render(<Demo />, document.body);
