@@ -11,13 +11,13 @@ class Demo extends React.Component {
     this.state = {
       checkboxes: {
         'First': false,
-        'Second': true,
-        'Third': false
+        'Second': true
       },
       radio: {
         'First': false,
         'Second': true,
-        'Third': false
+        'Third': false,
+        'Fourth': false
       }
     };
   }

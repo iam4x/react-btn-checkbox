@@ -6,6 +6,7 @@
 
   .btn-group:not(.bootstrap) {
     label {
+      border-right: 1px solid #000;
       border-bottom: 1px solid #000;
       border-top: 1px solid #000;
       display: inline-block;
@@ -24,9 +25,14 @@
         cursor: pointer;
       }
 
-      &:first-of-type,
-      &:last-of-type {
+      &:first-of-type {
         border: 1px solid #000;
+      }
+
+      &:last-of-type {
+        border-right: 1px solid #000;
+        border-bottom: 1px solid #000;
+        border-top: 1px solid #000;
       }
 
       &:first-of-type {
