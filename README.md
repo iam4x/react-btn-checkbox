@@ -1,3 +1,5 @@
+> # DEPRECATED, PLEASE USE ANOTHER LIBRARY
+
 # React Button Checkbox
 
 > Display your input checkbox and radio like buttons.
